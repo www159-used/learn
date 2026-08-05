@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const [notes, seriesList] = await Promise.all([
+  getCollection('notes'),
+  getCollection('series'),
+]);
+const collections = seriesList.map((collection) => ({
+  ...collection,
+  count: notes.filter((note) => note.data.series === collection.id).length,
+}));
+---
+
+<BaseLayout title="专栏">
+  <h1>专栏</h1>
+  <p class="page-date">按阅读顺序组织的主题笔记</p>
+  <ul class="collection-list">
+    {
+      collections.map((item) => (
+        <li>
+          <a href={`/series/${item.id}/`}>{item.data.title}</a>
+          <p>{item.data.description}</p>
+          <span>{item.count} 篇</span>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>

@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import { categories, categorySlugs } from '../../data/content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { slug: categorySlugs[category] },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+const notes = (await getCollection('notes'))
+  .filter((note) => note.data.category === category)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+function ymd(d: Date) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+---
+
+<BaseLayout title={category}>
+  <h1>{category}</h1>
+  <p class="page-date">按时间倒序</p>
+  <ul class="note-list">
+    {
+      notes.map((note) => (
+        <li>
+          <time datetime={note.data.date.toISOString()}>{ymd(note.data.date)}</time>
+          <a href={`/notes/${note.id}/`}>{note.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+  <a class="back" href="/categories/">← 所有分类</a>
+</BaseLayout>
