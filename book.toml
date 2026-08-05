@@ -17,3 +17,4 @@ result-dir = "mdbook-drawio"
 
 [output.html]
 site-url = "/"
+git-repository-url = "https://github.com/www159-used/learn"

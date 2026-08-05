@@ -44,7 +44,7 @@ jobs:
         run: mdbook build
 
       - name: Add CNAME for custom domain
-        run: echo 'blog.www159.top' > book/CNAME
+        run: echo 'learn.www159.top' > book/CNAME
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
