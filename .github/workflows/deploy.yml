@@ -32,11 +32,14 @@ jobs:
             ~/.cargo/git
           key: ${{ runner.os }}-cargo-mdbook-${{ hashFiles('book.toml') }}
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Install mdBook and preprocessors
         run: |
-          cargo install mdbook --locked || true
-          cargo install mdbook-modern-fomular --locked || true
-          cargo install --git https://github.com/www159-used/mdbook-drawio --locked || true
+          cargo install mdbook --locked
+          cargo install mdbook-modern-fomular --locked
+          cargo install --git https://github.com/www159-used/mdbook-drawio --locked
           echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
 
       - name: Build book
@@ -44,7 +47,7 @@ jobs:
         run: mdbook build
 
       - name: Add CNAME for custom domain
-        run: echo 'learn.www159.top' > book/CNAME
+        run: echo 'gh.www159.top' > book/CNAME
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
