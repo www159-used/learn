@@ -1,0 +1,35 @@
+# mdBook build output
+/book
+
+# Rust / cargo (if any local crates)
+/target
+
+# mdbook-drawio: keep committed SVGs for CI; ignore logs only
+/src/mdbook-drawio/*.log
+/src/mdbook-drawio/mdbook-drawio.log
+
+# Draw.io editor backups
+*.drawio.bkp
+*.drawio.bak
+*.drawio.dtmp
+
+# OS
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Env / secrets
+.env
+.env.*
+
+# Misc
+*.log
+.direnv/
+.result/

@@ -1,0 +1,63 @@
+name: Deploy mdBook
+
+on:
+  push:
+    branches: [master, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo bins
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-mdbook-${{ hashFiles('book.toml') }}
+
+      - name: Install mdBook and preprocessors
+        run: |
+          cargo install mdbook --locked || true
+          cargo install mdbook-modern-fomular --locked || true
+          cargo install --git https://github.com/www159-used/mdbook-drawio --locked || true
+          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+
+      - name: Build book
+        # 依赖已提交的 src/mdbook-drawio/*.svg，避免 CI 调用 draw.io 桌面版
+        run: mdbook build
+
+      - name: Add CNAME for custom domain
+        run: echo 'blog.www159.top' > book/CNAME
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: book
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
