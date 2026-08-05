@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const collections = await getCollection('series');
+  return collections.map((collection) => ({
+    params: { slug: collection.id },
+    props: { collection },
+  }));
+}
+
+const { collection } = Astro.props;
+const notes = (await getCollection('notes'))
+  .filter((note) => note.data.series === collection.id)
+  .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0));
+---
+
+<BaseLayout title={collection.data.title} description={collection.data.description}>
+  <h1>{collection.data.title}</h1>
+  <p class="page-date">{collection.data.description}</p>
+  <ol class="series-list">
+    {
+      notes.map((note) => (
+        <li>
+          <span>{String(note.data.seriesOrder).padStart(2, '0')}</span>
+          <a href={`/notes/${note.id}/`}>{note.data.title}</a>
+        </li>
+      ))
+    }
+  </ol>
+  <a class="back" href="/series/">← 所有专栏</a>
+</BaseLayout>

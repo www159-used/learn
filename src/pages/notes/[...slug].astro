@@ -1,0 +1,82 @@
+---
+import { getCollection, render } from 'astro:content';
+import { categorySlugs } from '../../data/content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map((note) => ({
+    params: { slug: note.id },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+const categorySlug = note.data.category
+  ? categorySlugs[note.data.category]
+  : undefined;
+const seriesDefinition = note.data.series
+  ? (await getCollection('series')).find(
+      (collection) => collection.id === note.data.series,
+    )
+  : undefined;
+const seriesNotes = seriesDefinition
+  ? (await getCollection('notes'))
+      .filter((item) => item.data.series === note.data.series)
+      .sort(
+        (a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0),
+      )
+  : [];
+const seriesIndex = seriesNotes.findIndex((item) => item.id === note.id);
+const previous = seriesNotes[seriesIndex - 1];
+const next = seriesNotes[seriesIndex + 1];
+
+function ymd(d: Date) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+---
+
+<BaseLayout title={note.data.title}>
+  <article>
+    <h1>{note.data.title}</h1>
+    <p class="page-date">
+      <time datetime={note.data.date.toISOString()}>{ymd(note.data.date)}</time>
+    </p>
+    {
+      (note.data.category || seriesDefinition) && (
+        <div class="article-meta" aria-label="文章归属">
+          {note.data.category && categorySlug && (
+            <a href={`/categories/${categorySlug}/`}>{note.data.category}</a>
+          )}
+          {seriesDefinition && (
+            <a href={`/series/${seriesDefinition.id}/`}>
+              {seriesDefinition.data.title}
+              {note.data.seriesOrder && ` · ${note.data.seriesOrder}`}
+            </a>
+          )}
+        </div>
+      )
+    }
+    <div class="prose">
+      <Content />
+    </div>
+    {
+      seriesDefinition && (
+        <nav class="series-pagination" aria-label={`${seriesDefinition.data.title} 连续阅读`}>
+          {previous ? (
+            <a href={`/notes/${previous.id}/`}>← {previous.data.title}</a>
+          ) : (
+            <span />
+          )}
+          <a href={`/series/${seriesDefinition.id}/`}>专栏目录</a>
+          {next ? <a href={`/notes/${next.id}/`}>{next.data.title} →</a> : <span />}
+        </nav>
+      )
+    }
+  </article>
+  {!seriesDefinition && <a class="back" href="/">← 目录</a>}
+</BaseLayout>

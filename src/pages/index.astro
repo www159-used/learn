@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const notes = (await getCollection('notes'))
+  .filter((note) => !note.data.series)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+function ym(d: Date) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  return `${y}-${m}`;
+}
+
+function ymd(d: Date) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+const groups = new Map<string, typeof notes>();
+for (const n of notes) {
+  const key = ym(n.data.date);
+  const list = groups.get(key) ?? [];
+  list.push(n);
+  groups.set(key, list);
+}
+---
+
+<BaseLayout title="目录">
+  <h1>目录</h1>
+  <p class="page-date">开始</p>
+  {
+    [...groups.entries()].map(([month, items]) => (
+      <section>
+        <h2 class="month">{month}</h2>
+        <ul class="note-list">
+          {items.map((n) => (
+            <li>
+              <time datetime={n.data.date.toISOString()}>{ymd(n.data.date)}</time>
+              <a href={`/notes/${n.id}/`}>{n.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</BaseLayout>
