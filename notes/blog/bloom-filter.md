@@ -5,7 +5,7 @@ date: 2026-07-04
 category: "算法"
 ---
 
-加假如你维护了一个server。
+假如你维护了一个server。
 
 有一天发现每次请求都查一次db太慢了，于是套了一层缓存。
 缓存的实现是loading cache。

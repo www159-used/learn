@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
+  <defs>
+    <marker id="arrow" markerHeight="8" markerWidth="8" orient="auto" refX="7" refY="4" viewBox="0 0 8 8">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#000000"/>
+    </marker>
+    <style>
+      text {
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+        fill: #000000;
+      }
+      .state { stroke-width: 1.5; }
+      .state-title { font-size: 15px; font-weight: 700; }
+      .state-body { font-size: 14px; }
+      .edge { fill: none; stroke: #000000; stroke-width: 1.5; marker-end: url(#arrow); }
+      .edge-label { font-size: 12px; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <circle cx="450" cy="49" r="14" fill="#000000"/>
+
+  <rect class="state" x="300" y="90" width="300" height="130" rx="10" fill="#dae8fc" stroke="#6c8ebf"/>
+  <text class="state-title" x="450" y="125" text-anchor="middle">1. &#x81EA;&#x7136;&#x8BED;&#x8A00;&#x5411;&#x91CF;&#x5316;</text>
+  <text class="state-body" x="450" y="157" text-anchor="middle">
+    <tspan x="450" dy="0">&#x8F93;&#x5165;&#xFF1A;&#x6211;&#x7684;&#x540D;&#x5B57;&#x662F;</tspan>
+    <tspan x="450" dy="24">tokens&#xFF1A;[&#x6211;&#x7684;&#xFF0C;&#x540D;&#x5B57;&#xFF0C;&#x662F;]</tspan>
+    <tspan x="450" dy="24">&#x5F97;&#x5230;&#x8F93;&#x5165; X</tspan>
+  </text>
+
+  <rect class="state" x="292" y="300" width="316" height="130" rx="10" fill="#fff2cc" stroke="#d6b656"/>
+  <text class="state-title" x="450" y="335" text-anchor="middle">2. Prefill</text>
+  <text class="state-body" x="450" y="367" text-anchor="middle">
+    <tspan x="450" dy="0">&#x6574;&#x6BB5; token &#x5E76;&#x884C;&#x8BA1;&#x7B97;</tspan>
+    <tspan x="450" dy="24">Q / K / V + causal mask</tspan>
+    <tspan x="450" dy="24">&#x5EFA;&#x7ACB; KV Cache</tspan>
+  </text>
+
+  <rect class="state" x="292" y="510" width="316" height="130" rx="10" fill="#e1d5e7" stroke="#9673a6"/>
+  <text class="state-title" x="450" y="545" text-anchor="middle">3. Decoder</text>
+  <text class="state-body" x="450" y="577" text-anchor="middle">
+    <tspan x="450" dy="0">&#x8BFB;&#x53D6; KV Cache</tspan>
+    <tspan x="450" dy="24">&#x751F;&#x6210;&#x4E0B;&#x4E00;&#x4E2A; token</tspan>
+  </text>
+
+  <ellipse cx="450" cy="795" rx="72.5" ry="35" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+  <ellipse cx="450" cy="795" rx="64.5" ry="27" fill="none" stroke="#b85450" stroke-width="1.5"/>
+  <text x="450" y="791" text-anchor="middle" class="state-body" font-weight="700">&lt;EOF&gt;</text>
+  <text x="450" y="810" text-anchor="middle" class="state-body">&#x505C;&#x673A;</text>
+
+  <path class="edge" d="M 450 63 L 450 90"/>
+  <path class="edge" d="M 450 220 L 450 300"/>
+  <text class="edge-label" x="490" y="264">&#x5F97;&#x5230; X</text>
+  <path class="edge" d="M 450 430 L 450 510"/>
+  <text class="edge-label" x="500" y="474">KV Cache &#x5C31;&#x7EEA;</text>
+  <path class="edge" d="M 450 640 L 450 760"/>
+  <text class="edge-label" x="500" y="704">&#x751F;&#x6210; &lt;EOF&gt;</text>
+
+  <path class="edge" d="M 608 550 L 700 550 Q 760 550 760 575 Q 760 600 700 600 L 608 600"/>
+  <text class="edge-label" x="730" y="570">
+    <tspan x="730" dy="0">&#x7EE7;&#x7EED;&#x751F;&#x6210;</tspan>
+    <tspan x="730" dy="16">token &#x2260; &lt;EOF&gt;</tspan>
+  </text>
+</svg>

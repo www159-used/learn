@@ -1,0 +1,90 @@
+<mxfile host="Electron" agent="Cursor">
+  <diagram id="token-vectorization" name="Token Vectorization">
+    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="legend" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=1;" value="图例&#xa;seq = 3&#xa;d_model = 4" vertex="1">
+          <mxGeometry height="75" width="150" x="25" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="text" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=15;fontColor=#000000;" value="文本&#xa;我的名字是" vertex="1">
+          <mxGeometry height="65" width="120" x="30" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="tokenize" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=13;fontColor=#000000;" value="分词器" vertex="1">
+          <mxGeometry height="45" width="85" x="210" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="tokens" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;fontColor=#000000;" value="tokens&#xa;[我的, 名字, 是]" vertex="1">
+          <mxGeometry height="65" width="155" x="350" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="ids" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;fontColor=#000000;" value="token IDs&#xa;[314, 926, 72]" vertex="1">
+          <mxGeometry height="65" width="145" x="560" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="table" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=13;fontColor=#000000;" value="Embedding 表 E&#xa;词表大小 × 4" vertex="1">
+          <mxGeometry height="65" width="150" x="560" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="lookup" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontColor=#000000;" value="查表" vertex="1">
+          <mxGeometry height="40" width="70" x="760" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="token-emb" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=13;fontColor=#000000;" value="词向量 E_token&#xa;3 × 4" vertex="1">
+          <mxGeometry height="65" width="145" x="875" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="pos-emb" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=13;fontColor=#000000;" value="位置向量 P&#xa;3 × 4" vertex="1">
+          <mxGeometry height="65" width="145" x="875" y="325" as="geometry" />
+        </mxCell>
+        <mxCell id="plus" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=20;fontColor=#000000;" value="+" vertex="1">
+          <mxGeometry height="45" width="45" x="1080" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="x" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=14;fontColor=#000000;" value="Transformer 输入 X&#xa;E_token + P&#xa;3 × 4" vertex="1">
+          <mxGeometry height="80" width="165" x="1180" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="e-text-tokenize" edge="1" parent="1" source="text" target="tokenize" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-tokenize-tokens" edge="1" parent="1" source="tokenize" target="tokens" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-tokens-ids" edge="1" parent="1" source="tokens" target="ids" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-ids-lookup" edge="1" parent="1" source="ids" target="lookup" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-table-lookup" edge="1" parent="1" source="table" target="lookup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="795" y="402" />
+              <mxPoint x="795" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-lookup-token-emb" edge="1" parent="1" source="lookup" target="token-emb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="240" />
+              <mxPoint x="850" y="167" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-token-emb-plus" edge="1" parent="1" source="token-emb" target="plus" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1060" y="167" />
+              <mxPoint x="1060" y="257" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-pos-plus" edge="1" parent="1" source="pos-emb" target="plus" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1060" y="357" />
+              <mxPoint x="1060" y="257" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-plus-x" edge="1" parent="1" source="plus" target="x" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

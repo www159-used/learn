@@ -1,0 +1,77 @@
+<mxfile host="Electron" agent="Cursor">
+  <diagram id="pre-ln-block" name="Pre-LN Transformer Block">
+    <mxGraphModel dx="800" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="h-l" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;fontStyle=1;fontSize=16;fontColor=#000000;" value="H_l" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ln-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=1.5;fontStyle=1;fontSize=15;fontColor=#000000;" value="LayerNorm" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="attention" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontStyle=1;fontSize=15;fontColor=#000000;" value="Self-Attention" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="plus-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;fontSize=22;fontColor=#000000;" value="+" vertex="1">
+          <mxGeometry height="50" width="50" x="375" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="h-l-prime" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;fontStyle=1;fontSize=16;fontColor=#000000;" value="H_l&#x27;" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="ln-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=1.5;fontStyle=1;fontSize=15;fontColor=#000000;" value="LayerNorm" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="mlp" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontStyle=1;fontSize=15;fontColor=#000000;" value="MLP / FFN" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="plus-2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;fontSize=22;fontColor=#000000;" value="+" vertex="1">
+          <mxGeometry height="50" width="50" x="375" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="h-next" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;fontStyle=1;fontSize=16;fontColor=#000000;" value="H_l+1" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="810" as="geometry" />
+        </mxCell>
+        <mxCell id="e-h-ln-1" edge="1" parent="1" source="h-l" target="ln-1" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-ln-1-attention" edge="1" parent="1" source="ln-1" target="attention" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-attention-plus-1" edge="1" parent="1" source="attention" target="plus-1" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-plus-1-h-prime" edge="1" parent="1" source="plus-1" target="h-l-prime" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-h-prime-ln-2" edge="1" parent="1" source="h-l-prime" target="ln-2" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-ln-2-mlp" edge="1" parent="1" source="ln-2" target="mlp" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-mlp-plus-2" edge="1" parent="1" source="mlp" target="plus-2" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-plus-2-h-next" edge="1" parent="1" source="plus-2" target="h-next" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="residual-1" edge="1" parent="1" source="h-l" target="plus-1" value="残差" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.5;strokeColor=#000000;fontSize=12;exitX=0;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="170" y="60" />
+              <mxPoint x="170" y="355" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="residual-2" edge="1" parent="1" source="h-l-prime" target="plus-2" value="残差" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.5;strokeColor=#000000;fontSize=12;exitX=0;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="450" />
+              <mxPoint x="100" y="745" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
