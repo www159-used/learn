@@ -5,7 +5,7 @@ date: 2026-08-05
 category: "数学"
 
 series: group-theory
-seriesOrder: 4
+seriesOrder: 6
 ---
 
 整体归纳法和代入法，没啥难度
@@ -91,7 +91,7 @@ k = n_1
 $$
 
 # ex1.5
-todo 循环群，数论，超纲
+todo: 循环群，数论，超纲
 
 # ex1.6
 $$

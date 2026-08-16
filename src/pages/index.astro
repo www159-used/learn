@@ -1,10 +1,24 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import { collectTodos, isIdea } from '../data/content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const notes = (await getCollection('notes'))
-  .filter((note) => !note.data.series)
+const allNotes = await getCollection('notes');
+const notes = allNotes
+  .filter((note) => !note.data.series && !isIdea(note.id))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const ideaItems = await Promise.all(
+  allNotes
+    .filter((note) => isIdea(note.id))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+    .map(async (note) => ({
+      note,
+      Content: (await render(note)).Content,
+    })),
+);
+
+const todoItems = collectTodos(allNotes);
 
 function ym(d: Date) {
   const y = d.getFullYear();
@@ -29,8 +43,71 @@ for (const n of notes) {
 ---
 
 <BaseLayout title="目录">
-  <h1>目录</h1>
-  <p class="page-date">开始</p>
+  <div class="board-row">
+    <section class="board">
+      <header class="board-toolbar">
+        <h2>Idea</h2>
+        <div class="board-toolbar-actions">
+          <span>未完成</span>
+          <span class="board-count">{ideaItems.length}</span>
+        </div>
+      </header>
+      {
+        ideaItems.length ? (
+          <ul class="idea-list" tabindex="-1">
+            {ideaItems.map(({ note, Content }) => (
+              <li>
+                <a class="idea-title" href={`/notes/${note.id}/`}>
+                  {note.data.title}
+                </a>
+                <time class="todo-date" datetime={note.data.date.toISOString()}>
+                  {ymd(note.data.date)}
+                </time>
+                <div class="idea-body">
+                  <Content />
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="board-empty">暂无 idea</p>
+        )
+      }
+    </section>
+    <section class="board">
+      <header class="board-toolbar">
+        <h2>Todo</h2>
+        <div class="board-toolbar-actions">
+          <span>未完成</span>
+          <span class="board-count">{todoItems.length}</span>
+        </div>
+      </header>
+      {
+        todoItems.length ? (
+          <ul class="todo-list" tabindex="-1">
+            {todoItems.map((item) => (
+              <li>
+                {item.href ? (
+                  <a class="todo-title" href={item.href}>
+                    {item.title}
+                  </a>
+                ) : (
+                  <p class="todo-title">{item.title}</p>
+                )}
+                {item.remark && <p class="todo-remark">{item.remark}</p>}
+                <time class="todo-date" datetime={item.date.toISOString()}>
+                  {ymd(item.date)}
+                </time>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="board-empty">没有未完成的 todo</p>
+        )
+      }
+    </section>
+  </div>
+  <h1 class="month">目录</h1>
   {
     [...groups.entries()].map(([month, items]) => (
       <section>
@@ -46,4 +123,14 @@ for (const n of notes) {
       </section>
     ))
   }
+  <script>
+    const resetBoardFocus = () => {
+      const active = document.activeElement;
+      if (active instanceof HTMLElement && active.matches('.idea-list, .todo-list')) {
+        active.blur();
+      }
+    };
+    resetBoardFocus();
+    window.addEventListener('pageshow', resetBoardFocus);
+  </script>
 </BaseLayout>

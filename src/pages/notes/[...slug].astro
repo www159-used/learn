@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { categorySlugs } from '../../data/content';
+import { categorySlugs, isIdea } from '../../data/content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -47,8 +47,9 @@ function ymd(d: Date) {
       <time datetime={note.data.date.toISOString()}>{ymd(note.data.date)}</time>
     </p>
     {
-      (note.data.category || seriesDefinition) && (
+      (note.data.category || seriesDefinition || isIdea(note.id)) && (
         <div class="article-meta" aria-label="文章归属">
+          {isIdea(note.id) && <a href="/">Idea</a>}
           {note.data.category && categorySlug && (
             <a href={`/categories/${categorySlug}/`}>{note.data.category}</a>
           )}

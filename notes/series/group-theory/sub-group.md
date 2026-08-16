@@ -31,5 +31,7 @@ Z(G) = \{a \mid ax = xa \quad x\in G\} \\
 
 证明: \\
 设\exists a, b \in Z(G) \\
-ab^{-1}x = xa^b{-1} 恒成立
+就要证明ab^{-1}x = xab^{-1} 恒成立 \\
+ab^{-1}x = axb^{-1}=(ax)b^{-1}=(xa)b^{-1}=xab^{-1} \\
+恒成立
 $$

@@ -50,7 +50,7 @@ def brute_force(input_str: str, pattern: str) -> list[int]:
 ## kmp
 
 参考数据结构课程，这里简单讲一遍。
-todo
+todo: 简单过一遍
 
 时间复杂度O(m+n)，空间复杂度O(m)。
 
@@ -113,4 +113,4 @@ def shift_and(input_str: str, pattern: str) -> list[int]:
 
 bm是当今最高效的匹配算法。利用后缀信息来减少没必要的匹配
 
-todo 占个坑
+todo: 占个坑
