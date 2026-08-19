@@ -59,7 +59,7 @@ $$
     
     $Ha = \{ha \mid h \in H\} = H$
 
-3. $a$在陪集$Ha$中
+3. $a\in Ha$
 
     即证明
     $\forall h, \exists h', ha=h' \implies a\in H$
@@ -81,4 +81,52 @@ $$
     
     $Hb = Hha = Ha$
 
-5. 
+5. $Ha = Hb \iff ab^{-1} \in H$
+
+    充分性：
+    
+    $\exists h_a,h_b,a,b, \quad h_aa = h_bb \implies ab^{-1}\in H$
+    
+    由条件得
+
+    $a = h_a^{-1}h_bb$
+    
+    $ab^{-1} = h_a^{-1}b_b \in H$
+    
+    必要性：
+
+    $ab^{-1}\in H \implies Ha = Hb$
+    
+    由条件和定理2得
+
+    $Hab^{-1} = H$
+
+    变形得
+    $Ha = Hb$
+
+6. $\forall Ha,Hb \implies Ha = Hb \lor Ha \cap Hb = \emptyset$
+
+## 陪集分解
+
+由陪集的性质可知，$G$可以写成子群$H$右陪集的并：
+$$
+G = \bigcup_{i=1}^rHa_i
+$$
+其中$r$被称为$H$对$G$的指数，写作$\mid G \colon H \mid$
+
+显然陪集的并是空集
+
+$$
+\bigcap_{i=1}^rHa_i = \emptyset
+$$
+
+类似的左陪集也有相同的性质，左右陪集的指数是相等的。
+
+## 拉格朗日定理
+
+$$
+\mid G \mid = \mid H \mid \cdot \mid G \colon H \mid
+$$
+
+证明略。
+

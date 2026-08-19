@@ -527,6 +527,8 @@ def boyer_moore_sunday(input_str: str, pattern: str) -> list[int]:
 
 BMH 和 BMS 的预处理都是 $O(m)$，额外空间与模式串中不同字符的数量有关。两者最坏时间复杂度仍为 $O(nm)$，但在普通文本上经常可以一次跳过多个字符，实现也比完整 BM 简单。
 
+todo: trie ac
+
 ## ref
 
 1. [OI WIKI](https://oi-wiki.org/string/bm/) https://oi-wiki.org/string/bm/

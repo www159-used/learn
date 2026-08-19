@@ -107,5 +107,10 @@ $$
 还没学？
 $$
 即证明\forall g，|g| = 4 \implies \\
-\forall a，b\in g，ab = ba \\
+\forall a，b\in g，ab = ba \\   
 $$
+证明：
+设$g$的元素$e, a, b, c$
+1. $ab = e$
+
+    显然有$b = a^{-1}$
