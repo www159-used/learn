@@ -13,7 +13,7 @@ importers:
         version: 6.3.11
       astro:
         specifier: ^5.12.0
-        version: 5.18.2(rollup@4.62.4)(typescript@5.9.3)
+        version: 5.18.2(rollup@4.62.4)(typescript@5.9.3)(yaml@2.9.0)
       katex:
         specifier: ^0.16.22
         version: 0.16.47
@@ -26,6 +26,9 @@ importers:
       remark-math:
         specifier: ^6.0.0
         version: 6.0.0
+      yaml:
+        specifier: ^2.9.0
+        version: 2.9.0
 
 packages:
 
@@ -1691,6 +1694,11 @@ packages:
   xxhash-wasm@1.1.0:
     resolution: {integrity: sha512-147y/6YNh+tlp6nd/2pWq38i9h6mz/EuQ6njIrmW8D1BS5nCqs0P6DG+m6zTGnNz5I+uhZ0SHxBs9BsPrwcKDA==}
 
+  yaml@2.9.0:
+    resolution: {integrity: sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==}
+    engines: {node: '>= 14.6'}
+    hasBin: true
+
   yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
@@ -2219,7 +2227,7 @@ snapshots:
 
   array-iterate@2.0.1: {}
 
-  astro@5.18.2(rollup@4.62.4)(typescript@5.9.3):
+  astro@5.18.2(rollup@4.62.4)(typescript@5.9.3)(yaml@2.9.0):
     dependencies:
       '@astrojs/compiler': 2.13.1
       '@astrojs/internal-helpers': 0.7.6
@@ -2276,8 +2284,8 @@ snapshots:
       unist-util-visit: 5.1.0
       unstorage: 1.17.5
       vfile: 6.0.3
-      vite: 6.4.3
-      vitefu: 1.1.3(vite@6.4.3)
+      vite: 6.4.3(yaml@2.9.0)
+      vitefu: 1.1.3(vite@6.4.3(yaml@2.9.0))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.3
@@ -3502,7 +3510,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@6.4.3:
+  vite@6.4.3(yaml@2.9.0):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.5)
@@ -3512,10 +3520,11 @@ snapshots:
       tinyglobby: 0.2.17
     optionalDependencies:
       fsevents: 2.3.3
+      yaml: 2.9.0
 
-  vitefu@1.1.3(vite@6.4.3):
+  vitefu@1.1.3(vite@6.4.3(yaml@2.9.0)):
     optionalDependencies:
-      vite: 6.4.3
+      vite: 6.4.3(yaml@2.9.0)
 
   web-namespaces@2.0.1: {}
 
@@ -3532,6 +3541,8 @@ snapshots:
       strip-ansi: 7.2.0
 
   xxhash-wasm@1.1.0: {}
+
+  yaml@2.9.0: {}
 
   yargs-parser@21.1.1: {}
 

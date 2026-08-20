@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { categorySlugs, isIdea } from '../../data/content';
+import { categorySlugs } from '../../data/categories';
+import { isIdea } from '../../data/content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {

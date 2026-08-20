@@ -1,0 +1,8 @@
+- name: 算法
+  slug: algorithms
+- name: 数学
+  slug: mathematics
+- name: LLM
+  slug: llm
+- name: 分布式系统
+  slug: distributed-systems

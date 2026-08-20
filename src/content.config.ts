@@ -1,14 +1,17 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { categories } from './data/categories';
 
-const categories = ['算法', '数学', 'LLM', '分布式系统'] as const;
+const category = z.string().refine((value) => categories.includes(value), {
+  message: '分类必须存在于 src/data/categories.yaml',
+});
 
 const notes = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './notes' }),
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
-    category: z.enum(categories).optional(),
+    category: category.optional(),
     series: z.string().optional(),
     seriesOrder: z.number().int().nonnegative().optional(),
   }),

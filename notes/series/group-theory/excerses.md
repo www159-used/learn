@@ -104,13 +104,50 @@ b^{-1}ab = a \\
 $$
 
 # ex1.7
-还没学？
 $$
 即证明\forall g，|g| = 4 \implies \\
 \forall a，b\in g，ab = ba \\   
 $$
 证明：
-设$g$的元素$e, a, b, c$
+
+假设4阶群$g$ $\exists a,b \in g, ab \ne ba$
+
+设$g$中元素为$e, a, b, c$
+
 1. $ab = e$
 
-    显然有$b = a^{-1}$
+    由条件得 $ba = c$
+
+    变形得
+$$
+即证明\forall g，|g| = 4 \implies \\
+\forall a，b\in g，ab = ba \\   
+$$
+证明：
+
+假设4阶群$g$ $\exists a,b \in g, ab \ne ba$
+
+设$g$中元素为$e, a, b, c$
+
+1. 设 $ab = e$
+
+    由条件得 $ba = c$
+
+    变形得
+    $$
+    \begin{cases}
+    a = b^{-1}\\
+    a = b^{-1}c
+    \end{cases}
+    $$
+    
+    联立得
+    $b^{-1} = b^{-1}c$
+    
+    $c = e$
+
+    与条件矛盾
+2. 设$ab = c$
+    同1
+
+故假设不成立
