@@ -9,8 +9,8 @@ date: 2026-08-15
 
     快捷键和输入法水火不相容。这个议题应该放到os层面，zellij作为子问题优先处理。
     
-4. 引入session跳转，模式切换可以接入`<space>`老板键
+4. agent overview
 
-    如果一个tab里开了好几个pane，可以考虑使用session来接管。tab替代pane的层级
+## agent overview
 
-    比如项目开发，一个worktree一个tab。
+为何值得单独为此创建一个插件？频繁跳转的核心原因就是并行agent。

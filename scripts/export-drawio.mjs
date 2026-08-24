@@ -1,10 +1,24 @@
-import { mkdir, readdir } from 'node:fs/promises';
+import { mkdir, readdir, symlink, unlink } from 'node:fs/promises';
 import { dirname, relative, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 const sourceDir = resolve('assets/diagrams');
 const outputDir = resolve('public/assets');
+const previewDir = resolve('assets');
 const drawio = process.env.DRAWIO_BIN ?? 'drawio';
+
+async function linkForMarkdownPreview(output) {
+  const preview = resolve(previewDir, relative(outputDir, output));
+  if (preview === output) return;
+
+  await mkdir(dirname(preview), { recursive: true });
+  try {
+    await unlink(preview);
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+  await symlink(relative(dirname(preview), output), preview);
+}
 
 async function collectDrawioFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -48,4 +62,5 @@ for (const source of sources) {
   }
 
   if (result.status !== 0) process.exit(result.status ?? 1);
+  await linkForMarkdownPreview(output);
 }

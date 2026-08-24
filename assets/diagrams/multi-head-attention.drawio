@@ -1,0 +1,46 @@
+<mxfile host="Electron" agent="Cursor">
+  <diagram id="multi-head-attention" name="Multi-Head Attention">
+    <mxGraphModel dx="900" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="x" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;fontStyle=1;fontSize=15;fontColor=#000000;" value="X&#xa;3 × 4" vertex="1">
+          <mxGeometry height="70" width="160" x="370" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="head1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#000000;" value="head 1&#xa;Q1,K1,V1 → O1&#xa;3 × 2" vertex="1">
+          <mxGeometry height="100" width="200" x="140" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="head2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontStyle=1;fontSize=14;fontColor=#000000;" value="head 2&#xa;Q2,K2,V2 → O2&#xa;3 × 2" vertex="1">
+          <mxGeometry height="100" width="200" x="560" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="concat" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1.5;fontStyle=1;fontSize=15;fontColor=#000000;" value="Concat(O1, O2)&#xa;3 × 4" vertex="1">
+          <mxGeometry height="80" width="220" x="340" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="wo" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1.5;fontStyle=1;fontSize=15;fontColor=#000000;" value="W_O&#xa;4 × 4" vertex="1">
+          <mxGeometry height="70" width="160" x="370" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="o" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;fontStyle=1;fontSize=15;fontColor=#000000;" value="O&#xa;3 × 4" vertex="1">
+          <mxGeometry height="70" width="160" x="370" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="e-x-h1" edge="1" parent="1" source="x" target="head1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.5;strokeColor=#000000;exitX=0.25;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-x-h2" edge="1" parent="1" source="x" target="head2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.5;strokeColor=#000000;exitX=0.75;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-h1-concat" edge="1" parent="1" source="head1" target="concat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-h2-concat" edge="1" parent="1" source="head2" target="concat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-concat-wo" edge="1" parent="1" source="concat" target="wo" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-wo-o" edge="1" parent="1" source="wo" target="o" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

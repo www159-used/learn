@@ -15,6 +15,8 @@ seriesOrder: 1
 2. prefill
 3. decode
 
+简单起见，我们假设推理使用了单头自注意力
+
 ![自注意力推理流程状态机](/assets/attention-inference-states.svg)
 
 ## 1. Token 向量化
@@ -293,5 +295,7 @@ $$
 - 否则把它作为下一轮 decode 的输入，继续循环。
 
 因此，decode 阶段不再对整段序列重新计算完整的 $QK^T$，而是使用当前的 $q_t$ 查询不断增长的 KV Cache。因果约束也由 Cache 中只包含当前及历史 token 这一范围保证。
+
+本文为便于说明，使用了单头注意力。实际 Transformer 通常使用多头注意力，将不同子空间中的注意力结果拼接后，再通过输出投影得到结果。下一章接着讲多头。
 
 ## 5. 总结

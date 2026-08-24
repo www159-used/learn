@@ -4,7 +4,7 @@ date: 2026-08-04
 
 category: "LLM"
 series: attention-a-day
-seriesOrder: 2
+seriesOrder: 3
 ---
 
 ## ref
