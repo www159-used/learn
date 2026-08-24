@@ -10,7 +10,3 @@ date: 2026-08-15
     快捷键和输入法水火不相容。这个议题应该放到os层面，zellij作为子问题优先处理。
     
 4. agent overview
-
-## agent overview
-
-为何值得单独为此创建一个插件？频繁跳转的核心原因就是并行agent。
