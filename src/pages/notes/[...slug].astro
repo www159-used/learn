@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import { categorySlugs } from '../../data/categories';
-import { isIdea } from '../../data/content';
+import { isIdea, seriesOrder, seriesOrderLabel } from '../../data/content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -25,9 +25,7 @@ const seriesDefinition = note.data.series
 const seriesNotes = seriesDefinition
   ? (await getCollection('notes'))
       .filter((item) => item.data.series === note.data.series)
-      .sort(
-        (a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0),
-      )
+      .sort((a, b) => seriesOrder(a.id) - seriesOrder(b.id))
   : [];
 const seriesIndex = seriesNotes.findIndex((item) => item.id === note.id);
 const previous = seriesNotes[seriesIndex - 1];
@@ -57,7 +55,7 @@ function ymd(d: Date) {
           {seriesDefinition && (
             <a href={`/series/${seriesDefinition.id}/`}>
               {seriesDefinition.data.title}
-              {note.data.seriesOrder && ` · ${note.data.seriesOrder}`}
+              {seriesOrderLabel(note.id) && ` · ${seriesOrderLabel(note.id)}`}
             </a>
           )}
         </div>

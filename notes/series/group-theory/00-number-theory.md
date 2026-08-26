@@ -5,7 +5,6 @@ date: 2026-08-05
 category: "数学"
 
 series: group-theory
-seriesOrder: 0
 ---
 
 呃呃，群论有部分涉及数论
@@ -37,3 +36,9 @@ $$
 \gcd(a，b)=d \iff \gcd(a/d，b/d) = 1
 $$
 证明略
+
+## 贝祖定理（同余逆元性质）
+
+$$
+(a,b) = 1 \iff \exist k \in \mathbb{Z}, ak \equiv 1 \pmod b
+$$

@@ -3,7 +3,6 @@ title: "循环群"
 date: 2026-08-14
 category: "数学"
 series: group-theory
-seriesOrder: 4
 ---
 
 ## 循环群的定义

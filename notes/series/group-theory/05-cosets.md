@@ -3,12 +3,13 @@ title: "群的陪集分解"
 date: 2026-08-14
 category: "数学"
 series: group-theory
-seriesOrder: 5
 ---
 
 ## 问题背景
 
 教材写的很明白，陪集分解是为了研究不相交子群的抽象工具
+
+接着通过一步步证明找出子群，元素阶的规律
 
 比如整数群$\mathbb{Z}$和7的倍数构成的群$7\mathbb{Z}$，显然$7\mathbb{Z}\le \mathbb{Z}$
 
@@ -124,9 +125,52 @@ $$
 
 ## 拉格朗日定理
 
+群论最重要的定理之一
+
 $$
 \mid G \mid = \mid H \mid \cdot \mid G \colon H \mid
 $$
 
-证明略。
+由1和陪集指数性质可证
 
+## 拉格朗日定理推论
+
+有限阶群$G$，每个元素的阶都是$\mid G \mid$的因子
+
+$\forall x \in G, x^{ord(G)} = e$
+
+证明：
+
+$$
+\exists a \in G, ord(a) = m \\
+
+令H = \langle a \rangle \le G \\
+
+有\mid H \mid = m \\
+
+由拉格朗日定理得：m \mid ord(G)
+$$
+
+## 陪集定理
+
+设
+$$
+G \ge H \ge k
+$$
+
+有
+
+1. $\mid G \colon K \mid = \mid G \colon H \mid \cdot \mid H \colon K \mid$
+
+2.
+$$
+G = \bigcup_{i=1}^m Hg_i, H = \bigcup_{i=i}^l Kh_i \implies G = \bigcup_{i=1}^m {\bigcup_{j=1}^l Kh_jg_i} \land Kh_1g_1 = K
+$$
+
+3. 
+$$
+G = \bigcup_{i=1}^mKa_i \implies
+存在某种排列\tau，使得\forall i, H_i = \bigcup_{i=1}^mKa_{\tau(i)}\
+$$
+
+证明略  

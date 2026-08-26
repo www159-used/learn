@@ -1,6 +1,6 @@
 ---
-import { getCollection, render } from 'astro:content';
-import { collectTodos, isIdea } from '../data/content';
+import { getCollection } from 'astro:content';
+import { collectTodos, ideaExcerpt, isIdea } from '../data/content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const allNotes = await getCollection('notes');
@@ -8,15 +8,13 @@ const notes = allNotes
   .filter((note) => !note.data.series && !isIdea(note.id))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const ideaItems = await Promise.all(
-  allNotes
-    .filter((note) => isIdea(note.id))
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-    .map(async (note) => ({
-      note,
-      Content: (await render(note)).Content,
-    })),
-);
+const ideaItems = allNotes
+  .filter((note) => isIdea(note.id))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .map((note) => ({
+    note,
+    excerpt: ideaExcerpt(note.body),
+  }));
 
 const todoItems = collectTodos(allNotes);
 
@@ -55,7 +53,7 @@ for (const n of notes) {
       {
         ideaItems.length ? (
           <ul class="idea-list" tabindex="-1">
-            {ideaItems.map(({ note, Content }) => (
+            {ideaItems.map(({ note, excerpt }) => (
               <li>
                 <a class="idea-title" href={`/notes/${note.id}/`}>
                   {note.data.title}
@@ -63,9 +61,7 @@ for (const n of notes) {
                 <time class="todo-date" datetime={note.data.date.toISOString()}>
                   {ymd(note.data.date)}
                 </time>
-                <div class="idea-body">
-                  <Content />
-                </div>
+                {excerpt && <p class="idea-body">{excerpt}</p>}
               </li>
             ))}
           </ul>

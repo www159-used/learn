@@ -1,7 +1,9 @@
 ---
-title: zellij tab缩略图
-date: 2026-08-20
+title: zellij overview
+date: 2026-08-26
 ---
+>从blog移到这里
+>以后考虑给产品设计单开一个类型
 
 agent时代，终端多路复用焕发第二春，我感觉就像外挂的记忆系统。
 
@@ -14,6 +16,8 @@ weights -> system prompt -> skill -> chat-session -> shell session[here] -> ...
 高强度使用zellij中，诉求是跨平台和开箱即用。
 
 碰到复杂项目需要多开tab和pane，所以出现新的问题：如何快速跳转？
+
+[github](https://github.com/www159-used/zellij-overview)
 
 ## 目标
 
@@ -28,7 +32,7 @@ weights -> system prompt -> skill -> chat-session -> shell session[here] -> ...
         [x] floating现在有bug，如果打开overview，hidden的floating pane也会出现
 
     - [x] 支持跳转到上一个tab：-
-    - [] 缩略图的tab操作
+    - [ ] 缩略图的tab操作
 
 
 2. flash.nvim风格搜索
@@ -36,7 +40,7 @@ weights -> system prompt -> skill -> chat-session -> shell session[here] -> ...
     flash.nvim是nvim的杀手级跳转插件，符合人类的跳转逻辑。
 
     - [x] flash模式
-    - [] 类flash mask遮罩
+    - [ ] 类flash mask遮罩
 
 
 3. pane管理
@@ -53,7 +57,7 @@ weights -> system prompt -> skill -> chat-session -> shell session[here] -> ...
 
     - [x] 常用的tab pin。避免二次跳转
 
-6. [] agent状态管理
+6. [ ] agent状态管理
 
     overview频繁跳转的核心原因就是agent的并行化，当一个agent在跑，我可以跳到另一个已完成的agent继续作业。
    
@@ -65,27 +69,33 @@ weights -> system prompt -> skill -> chat-session -> shell session[here] -> ...
 
     需要设计一款新产品桥接过来？
     
-7. [] session，tab的curd收编
+7. [ ] session，tab的curd收编
 
     基于位置的，vim风格的curd感觉比原生的curd要方便
     
-8. [] 产品设计
+8. [ ] 产品设计
 
-    - [] 自己的icon
-    - [] 递归风格的命名？
+    - [ ] 自己的icon
+    - [ ] 递归风格的命名？
     
 9. ui问题
     
     - [x] focus框不够明显
     - [x] 匹配单个立即跳转
     - [x] 渲染会有跳转。从小变大一次渲染紧致文字ui，框ui
-    - [] 顺序问题。现在的block排列顺序是什么，针对顺序可以开发什么功能。
-    - [] 支持键鼠
+    - [ ] 顺序问题。现在的block排列顺序是什么，针对顺序可以开发什么功能。
+    - [ ] 支持键鼠
+    
+10. 性能问题
+
+    - [ ] 打开cpu飙升
 
 ## 测试
 
 1. 单测。单测现在都是生成式，不太可靠
 
 2. e2e测试。做成lib式，同时提供tui和cli。e2e依赖真实的zellij，不允许随意编写。不引入回归问题
+    
+    todo: review测试用例
 
 3. 

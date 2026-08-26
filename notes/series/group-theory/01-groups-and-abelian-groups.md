@@ -3,7 +3,6 @@ title: "群和交换群"
 date: 2026-08-05
 category: "数学"
 series: group-theory
-seriesOrder: 1
 ---
 
 群论从入门到放弃。

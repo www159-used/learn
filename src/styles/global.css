@@ -292,45 +292,14 @@ a.idea-title:hover {
 }
 
 .idea-body {
-  margin-top: 0.45rem;
+  margin: 0.45rem 0 0;
   color: #3d3a34;
   font-size: 0.82rem;
   line-height: 1.55;
-}
-
-.idea-body :first-child {
-  margin-top: 0;
-}
-
-.idea-body :last-child {
-  margin-bottom: 0;
-}
-
-.idea-body h2,
-.idea-body h3,
-.idea-body h4 {
-  margin: 0.55rem 0 0.2rem;
-  font-size: 0.82rem;
-  font-weight: 700;
-}
-
-.idea-body p {
-  margin: 0.25rem 0;
-}
-
-.idea-body ul,
-.idea-body ol {
-  margin: 0.2rem 0;
-  padding-left: 1.15rem;
-}
-
-.idea-body li {
-  padding: 0.05rem 0;
-}
-
-.idea-body code {
-  font-family: var(--mono);
-  font-size: 0.9em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 .todo-list li {

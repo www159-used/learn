@@ -4,7 +4,6 @@ date: 2026-08-05
 
 category: "LLM"
 series: attention-a-day
-seriesOrder: 1
 ---
 
 自注意力是transformer的核心
@@ -13,7 +12,7 @@ seriesOrder: 1
 
 1. 自然语言向量化
 2. prefill
-3. decode
+3. decode。即因果自注意力
 
 简单起见，我们假设推理使用了单头自注意力
 
@@ -72,7 +71,7 @@ $$
 
 其中每一行对应一个 token；后面的注意力计算图将以这个 $X$ 作为输入。
 
-## 2. 自注意力block的工作原理
+## 2. 因果(Casual)自注意力计算
 
 下面先建立因果自注意力的共同数学公式。prefill 和 decode 的执行方式不同，但都围绕 Q、K、V、causal mask 和加权求和展开。
 
@@ -223,7 +222,7 @@ MLP 对每个 token 独立计算，使用同一组参数，不直接混合不同
 3. 使用下三角 causal mask，保证第 $i$ 个 token 只能使用 $k_0,\ldots,k_i$ 和 $v_0,\ldots,v_i$。
 4. 每个注意力输出经过 MLP，得到下一层的 hidden state；重复多层后，得到整段 prompt 的最终表示。
 
-## 4. decode
+## 4. decode循环
 
 ### LM Head
 
@@ -294,8 +293,3 @@ $$
 - 如果下一个 token 是 $\text{<EOF>}$，生成过程停止；
 - 否则把它作为下一轮 decode 的输入，继续循环。
 
-因此，decode 阶段不再对整段序列重新计算完整的 $QK^T$，而是使用当前的 $q_t$ 查询不断增长的 KV Cache。因果约束也由 Cache 中只包含当前及历史 token 这一范围保证。
-
-本文为便于说明，使用了单头注意力。实际 Transformer 通常使用多头注意力，将不同子空间中的注意力结果拼接后，再通过输出投影得到结果。下一章接着讲多头。
-
-## 5. 总结

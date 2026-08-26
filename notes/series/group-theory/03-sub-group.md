@@ -3,7 +3,6 @@ title: "子群"
 date: 2026-08-05
 category: "数学"
 series: group-theory
-seriesOrder: 3
 ---
 ## 子群
 

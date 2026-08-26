@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { seriesOrder, seriesOrderLabel } from '../../data/content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -13,7 +14,7 @@ export async function getStaticPaths() {
 const { collection } = Astro.props;
 const notes = (await getCollection('notes'))
   .filter((note) => note.data.series === collection.id)
-  .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0));
+  .sort((a, b) => seriesOrder(a.id) - seriesOrder(b.id));
 ---
 
 <BaseLayout title={collection.data.title} description={collection.data.description}>
@@ -23,7 +24,7 @@ const notes = (await getCollection('notes'))
     {
       notes.map((note) => (
         <li>
-          <span>{String(note.data.seriesOrder).padStart(2, '0')}</span>
+          <span>{seriesOrderLabel(note.id)}</span>
           <a href={`/notes/${note.id}/`}>{note.data.title}</a>
         </li>
       ))

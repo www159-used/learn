@@ -3,29 +3,93 @@ title: zellij agent dashboard
 date: 2026-08-24
 ---
 
+[github](https://github.com/www159-used/zellij-agent-board)
+
 ## 产品现状
 
-![alt text](image.png)
+![v0.1.0](image.png)
+<center>v0.1.0</center>
+<br>
+
+![v0.2.0](image-1.png)
+<center>v0.2.0</center>
+<br>
+
+![v0.3.1](image-2.png)
+<center>v0.3.1</center>
+<br>
+
+![0.4.0](image-3.png)
+<center>v0.4.0</center>
+<br>
 
 仿overview的ui，快速制造了原型。仍有不足之处：
 
-比较明显的问题：
+## 比较明显的问题
 
-- [x] 幂等快捷键，按一次进入，再按一次退出
-- [] 首次加载时间。首次加载会有点慢
-- [x] 无效信息比较多，agent 青色字，session标题这些信息不够有效
-- [x] 引入flash.nvim 
-- [x] working时间每次从0开始
-- [x] 跳转后原来的不关
-- [] 显示相对时间而不是绝对时间
+- [ ] 新状态：当plan模式要我选择，或者切换模式，有特殊的标记，或者联动notification
 
-值得研究的问题：
+- [ ] notification问题。
 
-- [] 居中布局
-- [] 和overview的联动，我甚至想让oveview首次渲染agent管理，legacy session tab跳转进入space l
+    notification可能来不及看
+    
+    设计更现代的noti信息，聚合，缓存
+
+- [ ] 分级搜索
+
+    面对agent膨胀，难以跳转的解决方案
+
+    先跳session，在跳命名
+    
+- [ ] sb输入法问题
+
+    terminal的严父，我需要有个自动切换输入法到en的机制，切换后弹出dialog提醒。
+
+- [ ] pin模式
+
+    一些热点agent可以pin在最开始优先跳
+    
+- [ ] 滚屏行为优化
+
+    上下滚选中，滚屏逻辑有些问题。
+
+    滚屏是为了更精确的移动view和光标，配合s
+
+    如果只溢出1行，我要G s。
+
+    在纠结滚屏和z系列快捷键
+    
+- [ ] search快速跳转
+
+    如果只匹配1个直接跳即可
+    
+- [ ] 相对行号
+
+    相对行号是另一高效跳转模式
+    
+- [ ] lru排序面板
+
+    相对高效的信息呈现。进入lru排序，按照时间顺序排列。根据幂律频繁使用的一定在前几列
+
+
+## 值得研究的问题
+
+- [ ] 居中布局
+- [ ] 和overview的联动，我甚至想让oveview首次渲染agent管理，legacy session tab跳转进入space l
 
 产品设计：
-- [] icon
+- [ ] icon
+
+## 产品维护
+- [ ] 使用数据统计
+
+## 产品验收
+- [ ] 人类可读的e2e测试框架
 
 
 ## 测试
+
+- [ ] 仿mysql搭了一套声明式的集成测试。还不够仿真
+
+## 设计
+

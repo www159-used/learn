@@ -13,7 +13,6 @@ const notes = defineCollection({
     date: z.coerce.date(),
     category: category.optional(),
     series: z.string().optional(),
-    seriesOrder: z.number().int().nonnegative().optional(),
   }),
 });
 
