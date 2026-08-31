@@ -18,13 +18,21 @@ date: 2026-08-30
 ```
 i'm seated into time, it's passed by
 
-yet another the hopeful thought of you
+yet another hopeful thought of you
 
 and despondently staring into the cold screen, at pictures 
 
 you and me were laughing loud
 
-i wanted so much to avoid all scences, i end up knowing there
+i wanted so much to avoid all scences, i end up knowing more
 
 i'm now surrounded, inside it, and days go by, rolling on 
+
+no matter what's implied
+
+wish hope was all we needed to meet once again
+
+i nod at all the word you speek
+
+yes i believe
 ```
