@@ -13,7 +13,7 @@ date: 2026-08-30
 
 听觉上英文版有些新鲜感，顿挫感更强
 
-简单看了词，没有那种为了写词押韵生硬塞入的符号，和主流的相比更加自然
+简单看了词，生硬的口水符号没有泛滥，但是还是有一点
 
 ```
 i'm seated into time, it's passed by
@@ -24,15 +24,25 @@ and despondently staring into the cold screen, at pictures
 
 you and me were laughing loud
 
+---
+
 i wanted so much to avoid all scences, i end up knowing more
 
 i'm now surrounded, inside it, and days go by, rolling on 
 
 no matter what's implied
 
-wish hope was all we needed to meet once again
+wish hope was all i needed to meet once again
 
-i nod at all the word you speek
+---
 
-yes i believe
+i nod at all the words you speek
+
+yes i believe, in reture i'm all alone
+
+as you leaving me here, as time is passing through
+
+---
 ```
+
+todo: 背诵
