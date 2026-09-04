@@ -89,6 +89,42 @@ weights -> system prompt -> skill -> chat-session -> shell session[here] -> ...
 10. 性能问题
 
     - [ ] 打开cpu飙升
+    
+11. 嵌套session
+
+```mermaid
+sequenceDiagram
+      actor 用户
+      participant B as B 的 Overview
+      participant 共享信息 as 跨端跳转信息
+      participant 入口 as A 的约定连接 Pane
+      participant A as A 的控制器
+      participant 目标 as A / ww / Tab 2
+      用户->>B: 选择 A / ww / Tab 2
+      B->>共享信息: 保存目标位置
+      B->>入口: 自动执行 Ascend
+      入口->>A: 通知已经回到 Host
+      A->>共享信息: 读取目标位置
+      A->>目标: 切换到 ww / Tab 2
+      目标-->>用户: 完成跨 Host 跳转
+```
+
+```mermaid
+sequenceDiagram
+      actor 用户
+      participant A as A 的 Overview
+      participant 共享信息 as 跨端跳转信息
+      participant 入口 as A 的约定连接 Pane
+      participant B as B 的控制器
+      participant 目标 as B / backend / logs
+      用户->>A: 选择 B / backend / logs
+      A->>共享信息: 保存目标位置
+      A->>入口: 切换到约定连接 Pane
+      入口->>B: 自动 Descend
+      B->>共享信息: 读取目标位置
+      B->>目标: 切换到 backend / logs
+      目标-->>用户: 完成跨 Host 跳转
+```
 
 ## 测试
 

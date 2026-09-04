@@ -2,17 +2,29 @@ export function isIdea(id: string) {
   return id === 'ideas' || id.startsWith('ideas/');
 }
 
-const SERIES_NOTE = /(?:^|\/)(\d+)-[^/]+$/;
+const SERIES_NOTE = /(?:^|\/)(-?\d+)-[^/]+$/;
 
-/** 专栏篇序来自文件名：`01-红烧肉.md` → 1 */
-export function seriesOrder(id: string): number {
+function seriesIndex(id: string): number | null {
   const match = SERIES_NOTE.exec(id);
-  return match ? Number(match[1]) : 0;
+  return match ? Number(match[1]) : null;
+}
+
+/**
+ * 专栏篇序来自文件名，模仿 Python 下标：
+ * `01-红烧肉.md` → 1（从头）
+ * `-01-excerses.md` → -1（从末尾，-2 在 -1 前）
+ */
+export function seriesOrder(id: string): number {
+  const index = seriesIndex(id);
+  if (index === null) return 0;
+  return index >= 0 ? index : Number.MAX_SAFE_INTEGER + index;
 }
 
 export function seriesOrderLabel(id: string): string {
-  const match = SERIES_NOTE.exec(id);
-  return match ? match[1].padStart(2, '0') : '';
+  const index = seriesIndex(id);
+  if (index === null) return '';
+  const abs = String(Math.abs(index)).padStart(2, '0');
+  return index < 0 ? `-${abs}` : abs;
 }
 
 /** 首页 idea 预览：去图/代码/标记后截断，完整内容进详情页再渲染。 */

@@ -9,6 +9,10 @@ date: 2026-08-30
 
 听到的第一感觉就是中速，打水漂般的鼓点，电子音乐的符号
 
+## crack nm tui
+
+
+
 ## 词
 
 听觉上英文版有些新鲜感，顿挫感更强
@@ -29,6 +33,8 @@ you and me were laughing loud
 i wanted so much to avoid all scences, i end up knowing more
 
 i'm now surrounded, inside it, and days go by, rolling on 
+
+---
 
 no matter what's implied
 
