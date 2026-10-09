@@ -34,8 +34,6 @@ i wanted so much to avoid all scences, i end up knowing more
 
 i'm now surrounded, inside it, and days go by, rolling on 
 
----
-
 no matter what's implied
 
 wish hope was all i needed to meet once again
@@ -78,17 +76,29 @@ outer fence, when i took my eyes off
 
 soul is warmed, arrays of blossoms
 
-all, indeed, was something i could not see
+all, indeed, was something i could see
 
 ---
 
-wish i knew, wish i could have known of it, too worm out is my heart
+wish i knew, wish i could have know nof it, too worm out is my heart
 
 the closing doors i seal again, and stay over all alone
 
 enclosed in as i'm hiding, loose, i am there lying
 
 sustaining, i'm the one you left alone, behind
+
+---
+
+above, the blue-sky secenary
+
+those days of youth, eye can espy
+
+i know deep inside of me, i can get it all back on board
+
+i bring back atmospheres
+
+heartbeat is pacing as you vowed 'in love with you'
 
 ---
 ```
