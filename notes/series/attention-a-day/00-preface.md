@@ -10,6 +10,8 @@ series: attention-a-day
 - [nano chat discussion](https://github.com/karpathy/nanochat/discussions/481)
 - [nano chat](https://github.com/karpathy/nanochat)
 - [简介 blog](https://www.cnblogs.com/Goblinscholar/p/19800737)
+- [偏后训练微调](https://zhoujx4.github.io/llm-atlas/)
+- [llm入门，比我写的好](https://jonathanding.github.io/llm-learning/zh/articles/attention-variants/)
 
 ## 原理
 

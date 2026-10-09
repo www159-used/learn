@@ -24,7 +24,7 @@ i'm seated into time, it's passed by
 
 yet another hopeful thought of you
 
-and despondently staring into the cold screen, at pictures 
+and despondently staring into a cold screen, at pictures 
 
 you and me were laughing loud
 
@@ -44,9 +44,51 @@ wish hope was all i needed to meet once again
 
 i nod at all the words you speek
 
-yes i believe, in reture i'm all alone
+yes i believe, in return i'm all alone
 
-as you leaving me here, as time is passing through
+as you leaving me here, sitting, as time is passing through
+
+many plans i'd put together, 
+
+memories of you, i'm feeling 
+
+i look for in my daily life
+
+---
+
+more days behind me yet to come, when in my hand,
+
+slip away, and i'm watching them fall
+
+since way before,  i have been searching, it's gone and i'm
+
+looking back and rememebering what i'm still holding onto
+
+---
+
+draw lines and separate, don't look back
+
+gates are facing reality,
+
+and i cast it off that's why
+
+i could not realize, realize
+
+outer fence, when i took my eyes off
+
+soul is warmed, arrays of blossoms
+
+all, indeed, was something i could not see
+
+---
+
+wish i knew, wish i could have known of it, too worm out is my heart
+
+the closing doors i seal again, and stay over all alone
+
+enclosed in as i'm hiding, loose, i am there lying
+
+sustaining, i'm the one you left alone, behind
 
 ---
 ```

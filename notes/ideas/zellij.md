@@ -11,9 +11,6 @@ date: 2026-08-15
     
 - [ ] 多tab管理带来的渲染问题。
     
-- [ ] 焦点检测插件。sb苹果的窗口没有聚焦的信息
-
-    我希望失去焦点有显眼的提示，比如popup，变色等
     
 - [ ] nest快捷管理。进入nest session如呼吸般简单
 
@@ -22,3 +19,12 @@ date: 2026-08-15
 - [ ] agent跨pane通信的可能性
 
     现在的『交响乐』在一个agent内部。如果多个agent进程间通信呢？
+    
+- [ ] 重启核打击
+
+    重启一次mac，所有session都被kill，所有pane的agent都关了。
+
+    - [x] session resume
+    - [x] agent resume
+    - [ ] 从session manager打开session也要恢复
+    
